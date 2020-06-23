@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import './Home.css';
 
 class Home extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <Container fluid className="main-container">
+        <Container fluid className="main-container vertical-center">
             <Row>
                 <Col>
                     {this.state.currentDate + " " + this.state.currentTime}
