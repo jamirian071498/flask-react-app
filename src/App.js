@@ -10,13 +10,21 @@ class App extends Component {
 
     this.state = {
       numClicks: 0,
-      currentTime: 0
+      currentTime: "",
+      currentDate: ""
     }
+
+    this.getTime = this.getTime.bind(this)
   }
 
   componentDidMount() {
+    setInterval(this.getTime, 750)
+  }
+
+  getTime() {
     fetch('/api/time').then(res => res.json()).then(data => this.setState({
-      currentTime: data.time
+      currentTime: data.time,
+      currentDate: data.date
     }))
   }
 
@@ -51,7 +59,7 @@ class App extends Component {
           </Row>
           <Row>
             <Col>
-              Current time: {this.state.currentTime}
+              {this.state.currentDate + " " + this.state.currentTime}
             </Col>
           </Row>
         </Container>
