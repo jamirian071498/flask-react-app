@@ -19,10 +19,6 @@ class App extends Component {
               <Nav.Link as={Link} to="/recent">Recent</Nav.Link>
               <Nav.Link as={Link} to="/stats">Statistics</Nav.Link>
             </Nav>
-            <Form inline>
-              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-              <Button variant="outline-info">Search</Button>
-            </Form>
           </Navbar>
           <Switch>
             <Route exact path="/">
