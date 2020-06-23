@@ -1,68 +1,44 @@
 import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col } from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from './Home';
+import Classify from './Classify';
+import Recent from './Recent';
+import Statistics from './Statistics';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      numClicks: 0,
-      currentTime: "",
-      currentDate: ""
-    }
-
-    this.getTime = this.getTime.bind(this)
-  }
-
-  componentDidMount() {
-    setInterval(this.getTime, 750)
-  }
-
-  getTime() {
-    fetch('/api/time').then(res => res.json()).then(data => this.setState({
-      currentTime: data.time,
-      currentDate: data.date
-    }))
-  }
-
-  increment() {
-    this.setState({
-      numClicks: this.state.numClicks + 1
-    })
-  }
-
   render() {
     return (
       <div className="App">
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Trash Classifier</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#classify">Classify</Nav.Link>
-            <Nav.Link href="#mytrash">My Trash</Nav.Link>
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-info">Search</Button>
-          </Form>
-        </Navbar>
-        <Container fluid className="main-container">
-          <Row>
-            <Col>
-            <button onClick={() => this.increment()}>Click me!</button>
-            <p>Count: {this.state.numClicks}</p>
-            <FontAwesomeIcon icon={faTrash}></FontAwesomeIcon>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {this.state.currentDate + " " + this.state.currentTime}
-            </Col>
-          </Row>
-        </Container>
+        <Router>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand as={Link} to="/">Trash Classifier</Navbar.Brand>
+            <Nav className="mr-auto">
+              <Nav.Link as={Link} to="/classify">Classify</Nav.Link>
+              <Nav.Link as={Link} to="/recent">Recent</Nav.Link>
+              <Nav.Link as={Link} to="/stats">Statistics</Nav.Link>
+            </Nav>
+            <Form inline>
+              <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+              <Button variant="outline-info">Search</Button>
+            </Form>
+          </Navbar>
+          <Switch>
+            <Route exact path="/">
+              <Home/>
+            </Route>
+            <Route path="/classify">
+              <Classify/>
+            </Route>
+            <Route path="/recent">
+              <Recent/>
+            </Route>
+            <Route path="/stats">
+              <Statistics/>
+            </Route>
+          </Switch>
+        </Router>
       </div>
     )
   }

@@ -3,7 +3,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-weekdays = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 @app.route('/api/time')
 def getCurrentTime():
@@ -14,6 +14,8 @@ def getCurrentTime():
 
 	if newHr < 1:
 		newHr = 12 + newHr
+	elif newHr > 12:
+		newHr -= 12
 	
 	hrTime = str(newHr) if newHr > 9 else '0' + str(newHr)
 	minTime = str(gmTime.tm_min) if gmTime.tm_min > 9 else '0' + str(gmTime.tm_min)
