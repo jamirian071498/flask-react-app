@@ -11,6 +11,9 @@ def getCurrentTime():
 	gmTime = time.gmtime(milliTime)
 	date = weekdays[gmTime.tm_wday] + ', ' + months[gmTime.tm_mon] + ' ' + str(gmTime.tm_mday) + ' ' + str(gmTime.tm_year)
 	newHr = gmTime.tm_hour - 7
+
+	if newHr < 1:
+		newHr = 12 + newHr
 	
 	hrTime = str(newHr) if newHr > 9 else '0' + str(newHr)
 	minTime = str(gmTime.tm_min) if gmTime.tm_min > 9 else '0' + str(gmTime.tm_min)
