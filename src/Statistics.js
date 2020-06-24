@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import './Statistics.css';
+import './Container.css';
 
 class Statistics extends Component {
   constructor(props) {

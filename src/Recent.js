@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import './Recent.css';
+import './Container.css';
 
 class Recent extends Component {
   constructor(props) {

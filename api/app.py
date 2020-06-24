@@ -1,5 +1,5 @@
 import time
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 months = ['', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -24,3 +24,16 @@ def getCurrentTime():
 	_time = hrTime + ':' + minTime + ':' + secTime
 
 	return {'date': date, 'time': _time}
+
+@app.route('/api/sort', methods = ['GET', 'POST'])
+def sort():
+	if request.method != "POST":
+		return jsonify(status="sad")
+	
+	country = request.form["country"]
+	image = request.files["image"]
+
+	print('Country: {}'.format(country))
+	print('Image: {}'.format(image))
+
+	return jsonify(status="happy")

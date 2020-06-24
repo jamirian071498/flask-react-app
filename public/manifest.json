@@ -1,6 +1,6 @@
 {
-  "short_name": "Trash Classifier",
-  "name": "Machine Learning Classifier of Trash",
+  "short_name": "Waste Sorter",
+  "name": "Machine Learning Classifier of Waste",
   "icons": [
     {
       "src": "favicon.ico",

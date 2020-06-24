@@ -5,3 +5,8 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
+
+  .row-margin  {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
