@@ -39,7 +39,16 @@ class Sort extends Component {
     })
   }
 
+  showFormAlert() {
+    console.log('show form alert')
+  }
+
   onSort(event) {
+    if (this.state.country === "" || this.state.image === null) {
+      this.showFormAlert()
+      return
+    }
+
     let data = new FormData()
     data.append('country', this.state.country)
     data.append('image', this.state.image)
@@ -85,7 +94,7 @@ class Sort extends Component {
                       <Form.File id="file-selector" onChange={(e) => this.onInputChange(e)} accept="image/*"/>
                     </Form.Group>
                   </Col>
-                  <Col md={3}>
+                  <Col md={1}>
                     <Form.Group>
                       <Button variant="primary" type="submit">Sort</Button>
                     </Form.Group>
